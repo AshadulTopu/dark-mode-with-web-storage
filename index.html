@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dark mode with html 5 local storage</title>
+    <style>
+        :root{
+            --bg : #fff;
+            --text: #000;
+            --button : #800080 ;
+        }
+        .dark-theme{
+            --bg : #100014;
+            --text: #a5a5a5;
+            --button : #420942 ;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg);
+        }
+        h1{
+            color: var(--text);
+            font-size: 50px;
+        }
+        button{
+            background: var(--button);
+            padding: 20px;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--bg);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="">
+        <button> click me </button>
+        <h1>dark mode with html 5 local storage</h1>
+    </div>
+
+        </head>
+        <body>
+        
+
+
+    <script>
+        let toggleMode = document.querySelector('button')
+        const body = document.querySelector("body");
+        let darkMode = localStorage.getItem("dark-mode");
+
+        const enableDarkMode = () => {
+        body.classList.add("dark-theme");
+        localStorage.setItem("dark-mode", "enabled");
+        };
+
+        const disableDarkMode = () => {
+        body.classList.remove("dark-theme");
+        localStorage.setItem("dark-mode", "disabled");
+        };
+
+        if (darkMode === "enabled") {
+        enableDarkMode(); // set state of darkMode on page load
+        }
+
+        toggleMode.addEventListener("click", (e) => {
+        darkMode = localStorage.getItem("dark-mode"); // update darkMode when clicked
+        if (darkMode === "disabled") {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+        });
+    </script>
+</body>
+</html>
